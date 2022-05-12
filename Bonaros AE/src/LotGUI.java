@@ -29,6 +29,8 @@ public class LotGUI extends JFrame {
 	JPanel boxPanel = new JPanel();
 	private JFrame lotguiFrame = new JFrame("LOT");
 	
+	
+	
 	public LotGUI(){
 		//Icon for close button
 		Image logo = new ImageIcon(this.getClass().getResource("/close_panel.png")).getImage();

@@ -20,6 +20,8 @@ public class Power_Message_GUI extends JFrame {
 	private JButton noButton = new JButton("ΟΧΙ");
 	private JLabel message = new JLabel("Θέλετε τερματισμό του προγράμματος; ");
 	
+	
+	
 	public Power_Message_GUI() {
 		
 		yesButton.setPreferredSize(new Dimension(100,10));

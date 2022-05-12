@@ -35,6 +35,8 @@ public class KeyboardGUI {
 	public KeyboardGUI() {
 		
 
+		
+		
 		JFrame mainFrame = new JFrame();
 		mainFrame.getContentPane().setLayout(new BorderLayout());
 		VirtualKeyboard vkb = new VirtualKeyboard();
