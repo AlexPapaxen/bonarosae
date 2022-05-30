@@ -90,6 +90,9 @@ public class LotGUI extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				
+				
+				
 				MyJFrame f = new MyJFrame(area);
 				f.setLocationRelativeTo(null);
 				String n = f.getArrayList().toString();
