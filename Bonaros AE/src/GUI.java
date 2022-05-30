@@ -44,9 +44,9 @@ public class GUI  {
     private final JLabel etiketaBarcode = new JLabel();
     private final JButton swipeLeft = new JButton();
     private final JButton swipeRight = new JButton();
-    private final JLabel  onomaetiketas = new JLabel("CARRIER.853903");
+    private final JLabel  onomaetiketas = new JLabel();
     private final JLabel name = new JLabel("ΟΝΟΜΑ ΕΤΙΚΕΤΑΣ : ");
-    //private final ArrayList<JLabel> listOfLabels = new ArrayList<>();
+    //private final ArrayList<ImageIcon> listOfLabels = new ArrayList<>();
     //private final AraayList<JLabel> listOfLabelTickets = new ArrayList<>();
     
 
@@ -119,8 +119,10 @@ public class GUI  {
 		zeroingButton.setPreferredSize(new Dimension(100,100));
 				
 		//Εικόνα για Ετικέτα προϊόντος
-		Image etiketa = new ImageIcon(this.getClass().getResource("/image054.png")).getImage();
-		etiketaBarcode.setIcon(new ImageIcon(etiketa));
+		//ImageIcon etiketa = new ImageIcon(new ImageIcon("etiketa_demo.png").getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT));
+
+		//Image etiketa = new ImageIcon(this.getClass().getResource("etiketa_demo.png")).getImage();
+		//etiketaBarcode.setIcon(etiketa);
 		
 		//Εικόνα για Swipe Left κουμπί
 		Image swipe_l = new ImageIcon(this.getClass().getResource("/swipe_left.png")).getImage();
@@ -212,7 +214,7 @@ public class GUI  {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					//new OrderNamingGUI();
+					new OrderNamingGUI();
 									
 				}
 	        	
@@ -222,12 +224,39 @@ public class GUI  {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//new LotGUI();
+				new LotGUI();
 				
 			}
 			 
 		 });
 
+		 
+		 swipeRight.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				scaleImage("C:\\Users\\dai18\\git\\bonarosae\\Bonaros AE\\Images_icons\\test_label.jpg",etiketaBarcode);
+				//Image newImage = new ImageIcon(this.getClass().getResource("/test_label.jpg")).getImage();
+				//etiketaBarcode.setIcon(new ImageIcon(newImage));
+				
+				onomaetiketas.setText("COMP.LIMIT.1234AB");
+				
+				
+			}
+			 
+		 });
+		 
+		 swipeLeft.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				scaleImage("C:\\Users\\dai18\\git\\bonarosae\\Bonaros AE\\Images_icons\\etiketa_demo.png",etiketaBarcode);
+				
+				onomaetiketas.setText("CARRIER.853903");
+			}
+			 
+			 
+		 });
 	    
 		
 		
@@ -262,8 +291,7 @@ public class GUI  {
         southBorderLayoutPanel.add(southBox4);
        
         
-      //Δημιουργία Box και τοποθέτηση power button στο south panel
-        
+      //Δημιουργία Box και τοποθέτηση power button στο south panel        
         Box sendPowerButtonToCorner = Box.createVerticalBox();        
         sendPowerButtonToCorner.add(Box.createRigidArea(new Dimension(300,168)));
         sendPowerButtonToCorner.add(powerButton);       
@@ -344,24 +372,22 @@ public class GUI  {
 		
 		
 		etiketaBarcode.setAlignmentX(Component.CENTER_ALIGNMENT);
-		etiketaBarcode.setPreferredSize(new Dimension(380,600));
+		etiketaBarcode.setPreferredSize(new Dimension(400,500));
 		etiketaBarcode.setMaximumSize(new Dimension(Short.MAX_VALUE,Short.MAX_VALUE));
 		box.setAlignmentX(Component.CENTER_ALIGNMENT);
 		box.add(labelBox);
 		box.add(etiketaBarcode);
+		box.add(Box.createRigidArea(new Dimension(10,10)));
 		box.add(swipeBox);
         
        
 		westBoxLayoutPanel.setBackground(Color.LIGHT_GRAY);
         westBoxLayoutPanel.add(box);
-        westBoxLayoutPanel.setPreferredSize(new Dimension(650,0));
+        westBoxLayoutPanel.setPreferredSize(new Dimension(700,0));
         westBoxLayoutPanel.setBorder(BorderFactory.createTitledBorder(""));
         //copywrite.setVisible(true);
       
 
-        
-        
-        
         JFrame frame = new JFrame("Bonaros AE");
         ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("bonaros_big.jpg"));
         frame.setIconImage(logo.getImage());
@@ -400,15 +426,11 @@ public class GUI  {
     }
     
     
-	/*
-	 * class RoundBtn implements Border { private int r; RoundBtn(int r) { this.r =
-	 * r; } public Insets getBorderInsets(Component c) { return new Insets(this.r+1,
-	 * this.r+1, this.r+2, this.r); } public boolean isBorderOpaque() { return true;
-	 * }
-	 * 
-	 * @Override public void paintBorder(Component c, Graphics g, int x, int y, int
-	 * width, int height) { g.drawRoundRect(x, y, width-1, height-1, r, r);
-	 * 
-	 * } }
-	 */
+	public void scaleImage(String path, JLabel label) {
+		ImageIcon icon = new ImageIcon(path);
+		Image image = icon.getImage();
+		Image scaledImage = image.getScaledInstance(label.getWidth(),label.getHeight(),Image.SCALE_SMOOTH);
+		ImageIcon scaledIcon = new ImageIcon(scaledImage);
+		label.setIcon(scaledIcon);
+	}
 }

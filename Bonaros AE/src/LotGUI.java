@@ -13,12 +13,13 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class LotGUI extends JFrame {
 	
 	
-	private JLabel lot = new JLabel("LOT");
+	private JLabel lot = new JLabel("LOT: ");
 	private JTextField lotField = new JTextField();
 	
 	private JButton key = new JButton();
@@ -29,11 +30,12 @@ public class LotGUI extends JFrame {
 	JPanel boxPanel = new JPanel();
 	private JFrame lotguiFrame = new JFrame("LOT");
 	
+	private static JTextArea area = new JTextArea();
 	
 	
 	public LotGUI(){
 		//Icon for close button
-		Image logo = new ImageIcon(this.getClass().getResource("/close_panel.png")).getImage();
+		Image logo = new ImageIcon(this.getClass().getResource("/close_lot.png")).getImage();
 		close.setIcon(new ImageIcon(logo));
 		
 		lot.setFont(new Font("Arial",Font.BOLD,15));
@@ -41,8 +43,11 @@ public class LotGUI extends JFrame {
 		Box downBox = Box.createHorizontalBox();
 		Box midBox = Box.createVerticalBox();
 		
+		midBox.setMaximumSize(new Dimension(Short.MAX_VALUE,Short.MAX_VALUE));
+		midBox.setPreferredSize(new Dimension(800,770));
+		
 		lot.setPreferredSize(new Dimension(100,100));
-		lotField.setPreferredSize(new Dimension(400,50));
+		lotField.setPreferredSize(new Dimension(400,20));
 		lot.setAlignmentX(Component.CENTER_ALIGNMENT);
 		lotField.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
@@ -76,12 +81,27 @@ public class LotGUI extends JFrame {
 		
 		key.setPreferredSize(new Dimension(100,100));
 		key.setMaximumSize(new Dimension(Short.MAX_VALUE,Short.MAX_VALUE));
+		Image keyLogo = new ImageIcon(this.getClass().getResource("/keyb_img.png")).getImage();
+		key.setIcon(new ImageIcon(keyLogo));
+		
 		
 		key.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				new KeyboardGUI();
+				
+				MyJFrame f = new MyJFrame(area);
+				f.setLocationRelativeTo(null);
+				String n = f.getArrayList().toString();
+				n = n.substring(0,n.lastIndexOf(n));
+				lotField.setText(n);
+				System.out.println("The text is: " +f.getTb1().getText());
+				f.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				//f.setPreferredSize(new Dimension(500,500));
+				f.setBounds(100, 100, 500, 500);
+				f.pack();
+				f.setVisible(true);
+				
 				
 			}
 			
