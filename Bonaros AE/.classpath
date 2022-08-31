@@ -7,11 +7,33 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Program Files (x86)/MySQL/Connector J 8.0/mysql-connector-java-8.0.29.jar">
+	<classpathentry kind="lib" path="C:/Users/user/git/bonarosaeAdmin/Bonaros AE Admin/LGoodDatePicker-11.2.1.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/dai18/git/bonarosae/Bonaros AE/JKeyboard.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/git/bonarosaeAdmin/Bonaros AE Admin/jcalendar-1.4.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/user/git/bonarosaeProgramm/Bonaros AE/mysql-connector-java-8.0.11.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/user/git/bonarosaeProgramm/Bonaros AE/virtual-keyboard-1.30.3.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/user/git/bonarosaeProgramm/Bonaros AE/jxl-2.6.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/user/git/bonarosaeProgramm/Bonaros AE/jSerialComm-2.9.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/git/bonarosaeProgramm/Bonaros AE/liquidlnf.jar"/>
+	<classpathentry kind="lib" path="C:/Users/user/git/bonarosaeProgramm/Bonaros AE/LinearBarCode.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

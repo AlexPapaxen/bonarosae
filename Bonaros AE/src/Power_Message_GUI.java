@@ -1,39 +1,53 @@
 import java.awt.Component;
+import java.awt.Dialog.ModalityType;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 
+import com.fazecast.jSerialComm.SerialPort;
+
 public class Power_Message_GUI extends JFrame {
 	
-	private JFrame powerFrame=  new JFrame("Επιβεβαίωση τερματισμού");
+	private JFrame powerFrame=  new JFrame("Ξ•Ο€ΞΉΞ²ΞµΞ²Ξ±Ξ―Ο‰ΟƒΞ· Ο„ΞµΟΞΌΞ±Ο„ΞΉΟƒΞΌΞΏΟ");
+	
 	private JPanel panel = new JPanel();
-	private JButton yesButton = new JButton("ΝΑΙ");
+	private JButton yesButton = new JButton("ΞΞ‘Ξ™");
 	
-	private JButton noButton = new JButton("ΟΧΙ");
-	private JLabel message = new JLabel("Θέλετε τερματισμό του προγράμματος; ");
+	private JButton noButton = new JButton("ΞΞ§Ξ™");
+	private JLabel message = new JLabel("Ξ¤ΞµΟΞΌΞ±Ο„ΞΉΟƒΞΌΟΟ‚ Ξ»ΞµΞΉΟ„ΞΏΟ…ΟΞ³Ξ―Ξ±Ο‚; ");
 	
 	
 	
-	public Power_Message_GUI() {
+	public Power_Message_GUI(SerialPort port) {
+		String dialogMessage = "Ξ•Ο€ΞΉΞ²ΞµΞ²Ξ±Ξ―Ο‰ΟƒΞ· Ο„ΞµΟΞΌΞ±Ο„ΞΉΟƒΞΌΞΏΟ";
 		
-		yesButton.setPreferredSize(new Dimension(100,10));
+	  JDialog dialog = new JDialog(this,dialogMessage,ModalityType.APPLICATION_MODAL);
+		dialog.setFont(new Font("Arial",Font.PLAIN,15));
+	  	yesButton.setFont(new Font("Arial",Font.BOLD,13));
+	  	noButton.setFont(new Font("Arial",Font.BOLD,13));
+	  	message.setFont(new Font("Source Sans Pro",Font.BOLD,14));
+	  	dialog.setFont(new Font("Arial",Font.BOLD,15));
+	  	
+		yesButton.setPreferredSize(new Dimension(100,40));
 		yesButton.setMaximumSize(new Dimension(Short.MAX_VALUE,Short.MAX_VALUE));
-		noButton.setPreferredSize(new Dimension(100,10));
+		noButton.setPreferredSize(new Dimension(100,40));
 		noButton.setMaximumSize(new Dimension(Short.MAX_VALUE,Short.MAX_VALUE));
-		//Στοίχηση κουμπιών
+		//οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½ οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½
 		yesButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		noButton.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		
-		//Στοίχηση ετικέτας
+		//οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½ οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½οΏ½
 		message.setAlignmentX(Component.CENTER_ALIGNMENT);
 		
 		Box box = Box.createHorizontalBox();
@@ -52,6 +66,7 @@ public class Power_Message_GUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				port.closePort();
 				System.exit(0);
 				
 			}
@@ -63,7 +78,7 @@ public class Power_Message_GUI extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				powerFrame.dispose();
+				dialog.dispose();
 				
 			}
 			
@@ -74,14 +89,17 @@ public class Power_Message_GUI extends JFrame {
 		panel.setPreferredSize(new Dimension(400,100));
 		
 		ImageIcon logo = new ImageIcon(getClass().getClassLoader().getResource("bonaros.jpg"));
-		powerFrame.add(panel);
-		powerFrame.setIconImage(logo.getImage());
-		powerFrame.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-        powerFrame.pack();
-        powerFrame.setLocationRelativeTo(null);
-        powerFrame.setVisible(true);
-        powerFrame.setResizable(false);
-
+		dialog.add(panel);
+		
+		dialog.setIconImage(logo.getImage());
+		dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+        dialog.pack();
+        dialog.setSize(new Dimension(400,150));
+        dialog.setLocationRelativeTo(null);
+        dialog.setResizable(false);
+        dialog.setVisible(true);
+        
+        
 		
 	}
 

@@ -1,4 +1,6 @@
 
+import java.awt.Dialog.ModalityType;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -6,8 +8,16 @@ import java.awt.event.ActionListener;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
+import javax.swing.Box;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.JToggleButton;
+import javax.swing.WindowConstants;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -21,10 +31,11 @@ import javax.swing.JToggleButton;
  */
 public class MyJFrame extends javax.swing.JFrame {
 	private static ArrayList<String> arrayList = new ArrayList<>();
+	
     /**
      * Creates new form NewJFrame
      */
-    public MyJFrame(JTextArea area) {
+    public MyJFrame(JTextField area) {
         initComponents();
     }
 
@@ -37,11 +48,14 @@ public class MyJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
     	
-    	arrayList.add(" ");
-
+    	
+    	arrayList.removeAll(arrayList);
+    	//arrayList.add(" ");
+    	
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        area = new javax.swing.JTextArea();
+        area = new javax.swing.JTextField();
+        area.setFont(new java.awt.Font("sansserif", 1, 18));
         jPanel2 = new javax.swing.JPanel();
         esc = new javax.swing.JButton();
         one = new javax.swing.JButton();
@@ -85,7 +99,7 @@ public class MyJFrame extends javax.swing.JFrame {
         jButton41 = new javax.swing.JButton();
         bk2 = new javax.swing.JButton();
         sl = new javax.swing.JButton();
-        lock = new javax.swing.JButton();
+        lock = new javax.swing.JToggleButton();
         a = new javax.swing.JButton();
         s = new javax.swing.JButton();
         d = new javax.swing.JButton();
@@ -118,13 +132,24 @@ public class MyJFrame extends javax.swing.JFrame {
         add = new javax.swing.JButton();
         subtract = new javax.swing.JButton();
         enter = new javax.swing.JButton();
+        
+        String myString = "";
+        if(arrayList.size()>0) {
+        	for(int i=0;i<arrayList.size();i++) {
+        		myString+=arrayList.get(i);
+        		
+        	}
+    		
+    	}
+        area.setText(myString);
+        
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        area.setColumns(20);
-        area.setRows(5);
+        //area.setColumns(20);
+        //area.setRows(5);
         jScrollPane1.setViewportView(area);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -258,39 +283,100 @@ public class MyJFrame extends javax.swing.JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(jButton17.isSelected()) {
+				if(jButton17.isSelected() && !lock.isSelected()) {
 					jButton17.setText("GR");
-					 a.setText("�");
-				     b.setText("�");
-				     c.setText("�");
-				     d.setText("�");
-				     epsilon.setText("�");
-				     f.setText("�");
-				     g.setText("�");
-				     h.setText("�");
-				     i.setText("�");
-				     j.setText("�");
-				     k.setText("�");
-				     l.setText("�");
-				     m.setText("�");
-				     n.setText("�");
-				     o.setText("�");
-				     p.setText("�");
+					 a.setText("Α");
+				     b.setText("Β");
+				     c.setText("Ψ");
+				     d.setText("Δ");
+				     epsilon.setText("Ε");
+				     f.setText("Φ");
+				     g.setText("Γ");
+				     h.setText("Η");
+				     i.setText("Ι");
+				     j.setText("Ξ");
+				     k.setText("Κ");
+				     l.setText("Λ");
+				     m.setText("Μ");
+				     n.setText("Ν");
+				     o.setText("Ο");
+				     p.setText("Π");
 				     q.setText(";");
-				     r.setText("�");
-				     s.setText("�");
-				     t.setText("�");
-				     u.setText("�");
-				     v.setText("�");
-				     w.setText("�");
-				     x.setText("�");
-				     y.setText("�");
-				     z.setText("�");
+				     r.setText("Ρ");
+				     s.setText("Σ");
+				     t.setText("Τ");
+				     u.setText("Θ");
+				     v.setText("Ω");
+				     w.setText("ς");
+				     x.setText("Χ");
+				     y.setText("Υ");
+				     z.setText("Ζ");
 					
 				}
-				else {
+				if(jButton17.isSelected() && lock.isSelected()) {
+					jButton17.setText("GR");
+					
+					a.setText("α");
+				     b.setText("β");
+				     c.setText("ψ");
+				     d.setText("δ");
+				     epsilon.setText("ε");
+				     f.setText("φ");
+				     g.setText("γ");
+				     h.setText("η");
+				     i.setText("ι");
+				     j.setText("ξ");
+				     k.setText("κ");
+				     l.setText("λ");
+				     m.setText("μ");
+				     n.setText("ν");
+				     o.setText("ο");
+				     p.setText("π");
+				     q.setText(";");
+				     r.setText("ρ");
+				     s.setText("σ");
+				     t.setText("τ");
+				     u.setText("θ");
+				     v.setText("ω");
+				     w.setText("ς");
+				     x.setText("χ");
+				     y.setText("υ");
+				     z.setText("ζ");
+				}
+				if(!jButton17.isSelected() && lock.isSelected()) {
 					jButton17.setText("EN");
-					 a.setText("A");
+					a.setText("a");
+				     b.setText("b");
+				     c.setText("c");
+				     d.setText("c");
+				     epsilon.setText("e");
+				     f.setText("f");
+				     g.setText("g");
+				     h.setText("h");
+				     i.setText("i");
+				     j.setText("j");
+				     k.setText("k");
+				     l.setText("l");
+				     m.setText("m");
+				     n.setText("n");
+				     o.setText("o");
+				     p.setText("p");
+				     q.setText("q");
+				     r.setText("r");
+				     s.setText("s");
+				     t.setText("t");
+				     u.setText("u");
+				     v.setText("v");
+				     w.setText("w");
+				     x.setText("x");
+				     y.setText("y");
+				     z.setText("z");
+				     
+				
+			}
+				if(!jButton17.isSelected() && !lock.isSelected()) {
+					jButton17.setText("EN");
+					a.setText("A");
 				     b.setText("B");
 				     c.setText("C");
 				     d.setText("D");
@@ -317,7 +403,6 @@ public class MyJFrame extends javax.swing.JFrame {
 				     y.setText("Y");
 				     z.setText("Z");
 				}
-				
 			}
         	
         });
@@ -493,16 +578,144 @@ public class MyJFrame extends javax.swing.JFrame {
             });
 
             lock.setText("Caps Lock");
-            lock.addMouseListener(new java.awt.event.MouseAdapter() {
-                public void mouseClicked(java.awt.event.MouseEvent evt) {
-                    lockMouseClicked(evt);
-                }
+            lock.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					if (lock.isSelected() && !jButton17.isSelected()) { 
+					     a.setText("a");
+					     b.setText("b");
+					     c.setText("c");
+					     d.setText("c");
+					     epsilon.setText("e");
+					     f.setText("f");
+					     g.setText("g");
+					     h.setText("h");
+					     i.setText("i");
+					     j.setText("j");
+					     k.setText("k");
+					     l.setText("l");
+					     m.setText("m");
+					     n.setText("n");
+					     o.setText("o");
+					     p.setText("p");
+					     q.setText("q");
+					     r.setText("r");
+					     s.setText("s");
+					     t.setText("t");
+					     u.setText("u");
+					     v.setText("v");
+					     w.setText("w");
+					     x.setText("x");
+					     y.setText("y");
+					     z.setText("z");
+					     
+					     
+					     
+					  } 
+					if (!lock.isSelected() && !jButton17.isSelected()) {     
+					     a.setText("A");
+					     b.setText("B");
+					     c.setText("C");
+					     d.setText("D");
+					     epsilon.setText("E");
+					     f.setText("F");
+					     g.setText("G");
+					     h.setText("H");
+					     i.setText("I");
+					     j.setText("J");
+					     k.setText("K");
+					     l.setText("L");
+					     m.setText("M");
+					     n.setText("N");
+					     o.setText("O");
+					     p.setText("P");
+					     q.setText("Q");
+					     r.setText("R");
+					     s.setText("S");
+					     t.setText("T");
+					     u.setText("U");
+					     v.setText("V");
+					     w.setText("W");
+					     x.setText("X");
+					     y.setText("Y");
+					     z.setText("Z");
+					  }
+
+
+					if(!lock.isSelected() && jButton17.isSelected()) {
+						 a.setText("α");
+					     b.setText("β");
+					     c.setText("ψ");
+					     d.setText("δ");
+					     epsilon.setText("ε");
+					     f.setText("φ");
+					     g.setText("γ");
+					     h.setText("η");
+					     i.setText("ι");
+					     j.setText("ξ");
+					     k.setText("κ");
+					     l.setText("λ");
+					     m.setText("μ");
+					     n.setText("ν");
+					     o.setText("ο");
+					     p.setText("π");
+					     q.setText(";");
+					     r.setText("ρ");
+					     s.setText("σ");
+					     t.setText("τ");
+					     u.setText("θ");
+					     v.setText("ω");
+					     w.setText("ς");
+					     x.setText("χ");
+					     y.setText("υ");
+					     z.setText("ζ");
+					}
+					if(lock.isSelected() && jButton17.isSelected()) {
+						a.setText("Α");
+					    b.setText("Β");
+					    c.setText("Ψ");
+					    d.setText("Δ");
+					    epsilon.setText("Ε");
+					    f.setText("Φ");
+					    g.setText("Γ");
+					    h.setText("Η");
+					    i.setText("Ι");
+					    j.setText("Ξ");
+					    k.setText("Κ");
+					    l.setText("Λ");
+					    m.setText("Μ");
+					    n.setText("Ν");
+					    o.setText("Ο");
+					    p.setText("Π");
+					    q.setText(";");
+					    r.setText("Ρ");
+					    s.setText("Σ");
+					    t.setText("Τ");
+					    u.setText("Θ");
+					    v.setText("Ω");
+					    w.setText("ς");
+					    x.setText("Χ");
+					    y.setText("Υ");
+					    z.setText("Ζ");
+					}
+					
+					
+					
+				}
+            	
             });
-            lock.addActionListener(new java.awt.event.ActionListener() {
-                public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    lockActionPerformed(evt);
-                }
-            });
+//            lock.addMouseListener(new java.awt.event.MouseAdapter() {
+//                public void mouseClicked(java.awt.event.MouseEvent evt) {
+//                    lockMouseClicked(evt);
+//                }
+//            });
+//            lock.addActionListener(new java.awt.event.ActionListener() {
+//                public void actionPerformed(java.awt.event.ActionEvent evt) {
+//                    //lockActionPerformed(evt);
+//                }
+//            });
 
             a.setText("A");
             a.addActionListener(new java.awt.event.ActionListener() {
@@ -586,9 +799,65 @@ public class MyJFrame extends javax.swing.JFrame {
 
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					arrayList.removeAll(arrayList);
+					//arrayList.removeAll(arrayList);
 					arrayList.add(area.getText());
+					area.setText(area.getText());
 					
+					
+					JButton okButton = new JButton("ΕΝΤΑΞΕΙ");
+				    JFrame powerFrame=  new JFrame("ΑΠΟΘΗΚΕΥΣΗ ΑΛΛΑΓΩΝ");
+					JPanel panel = new JPanel();
+					JLabel message = new JLabel("ΟΙ ΑΛΛΑΓΕΣ ΣΑΣ ΑΠΟΘΗΚΕΥΤΗΚΑΝ ΕΠΙΤΥΧΩΣ ! ");
+					JDialog dialog = new JDialog(powerFrame,"Διαγραφή χρήστη",ModalityType.APPLICATION_MODAL);
+
+					
+						
+						okButton.setPreferredSize(new Dimension(10,30));
+						okButton.setMaximumSize(new Dimension(Short.MAX_VALUE,Short.MAX_VALUE));
+						
+						//�������� ��������
+						okButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+						
+						
+						
+						//�������� ��������
+						message.setAlignmentX(Component.CENTER_ALIGNMENT);
+						
+
+						Box labelbox = Box.createVerticalBox();
+						
+						
+						labelbox.setPreferredSize(new Dimension(280,70));
+						labelbox.add(message);
+						labelbox.add(Box.createRigidArea(new Dimension(20,20)));
+						labelbox.add(okButton);
+						
+						okButton.addActionListener(new ActionListener() {
+
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								
+								powerFrame.dispose();
+								
+							}
+							
+						});
+						
+						
+						
+						panel.add(labelbox);
+
+						panel.setPreferredSize(new Dimension(400,100));
+						dialog.add(panel);
+						powerFrame.pack();
+						
+						dialog.pack();
+				        dialog.setSize(400,130);
+				        dialog.setLocationRelativeTo(null);
+				        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+				        dialog.setResizable(true);
+				        dialog.setVisible(true);
+						
 					
 				}
             	
@@ -695,6 +964,61 @@ public class MyJFrame extends javax.swing.JFrame {
 				public void actionPerformed(ActionEvent e) {
 					arrayList.removeAll(arrayList);
 					arrayList.add(area.getText());
+					
+					JButton okButton = new JButton("ΕΝΤΑΞΕΙ");
+				    JFrame powerFrame=  new JFrame("ΑΠΟΘΗΚΕΥΣΗ ΑΛΛΑΓΩΝ");
+					JPanel panel = new JPanel();
+					JLabel message = new JLabel("ΟΙ ΑΛΛΑΓΕΣ ΣΑΣ ΑΠΟΘΗΚΕΥΤΗΚΑΝ ΕΠΙΤΥΧΩΣ ! ");
+					JDialog dialog = new JDialog(powerFrame,"Διαγραφή χρήστη",ModalityType.APPLICATION_MODAL);
+
+					
+						
+						okButton.setPreferredSize(new Dimension(10,30));
+						okButton.setMaximumSize(new Dimension(Short.MAX_VALUE,Short.MAX_VALUE));
+						
+						//�������� ��������
+						okButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+						
+						
+						
+						//�������� ��������
+						message.setAlignmentX(Component.CENTER_ALIGNMENT);
+						
+
+						Box labelbox = Box.createVerticalBox();
+						
+						
+						labelbox.setPreferredSize(new Dimension(280,70));
+						labelbox.add(message);
+						labelbox.add(Box.createRigidArea(new Dimension(20,20)));
+						labelbox.add(okButton);
+						
+						okButton.addActionListener(new ActionListener() {
+
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								
+								powerFrame.dispose();
+								
+							}
+							
+						});
+						
+						
+						
+						panel.add(labelbox);
+
+						panel.setPreferredSize(new Dimension(400,100));
+						dialog.add(panel);
+						powerFrame.pack();
+						
+						dialog.pack();
+				        dialog.setSize(400,130);
+				        dialog.setLocationRelativeTo(null);
+				        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+				        dialog.setResizable(true);
+				        dialog.setVisible(true);
+						
 					
 					
 				}
@@ -971,9 +1295,13 @@ public class MyJFrame extends javax.swing.JFrame {
                             .addComponent(enter, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addContainerGap())))
             );
+            JDialog dialog = new JDialog(this,"Πληκτρολόγιο",ModalityType.APPLICATION_MODAL);
+            
+            JPanel myPanel = new JPanel();
+            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(myPanel);
 
-            javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-            getContentPane().setLayout(layout);
+            myPanel.setLayout(layout);
+           
             layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -992,11 +1320,17 @@ public class MyJFrame extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addContainerGap())
             );
-
             
-            Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-            this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-            pack();
+            
+            dialog.add(myPanel);
+            
+            //pack();
+            dialog.pack();
+	        dialog.setSize(1000,500);
+	        dialog.setLocation(10, 270);
+	        dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+	        dialog.setResizable(true);
+	        dialog.setVisible(true);
         }// </editor-fold>//GEN-END:initComponents
 
     public  ArrayList<String> getArrayList() {
@@ -1023,7 +1357,8 @@ arrayList.add(z.toString());// TODO add your handling code here:
     }//GEN-LAST:event_spacebarActionPerformed
 
     private void tabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tabActionPerformed
-         area.setText(area.getText()+"         ");        // for tab in textbox
+         area.setText(area.getText()+"         ");
+         //arrayList.add(area.getText()+"         ");// for tab in textbox
     }//GEN-LAST:event_tabActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
@@ -1031,351 +1366,284 @@ arrayList.add(z.toString());// TODO add your handling code here:
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void oneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oneActionPerformed
-area.setText(area.getText()+one.getText());
+area.setText(area.getText()+one.getText().trim());
 arrayList.add(one.toString());// TODO add your handling code here:
     }//GEN-LAST:event_oneActionPerformed
 
     private void twoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_twoActionPerformed
-area.setText(area.getText()+two.getText());
+area.setText(area.getText()+two.getText().trim());
 arrayList.add(two.toString());// TODO add your handling code here:
     }//GEN-LAST:event_twoActionPerformed
 
     private void threeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_threeActionPerformed
-area.setText(area.getText()+three.getText());
+area.setText(area.getText()+three.getText().trim());
 arrayList.add(three.toString());// TODO add your handling code here:
     }//GEN-LAST:event_threeActionPerformed
 
     private void fourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fourActionPerformed
-area.setText(area.getText()+four.getText());
+area.setText(area.getText()+four.getText().trim());
 arrayList.add(four.toString());// TODO add your handling code here:
     }//GEN-LAST:event_fourActionPerformed
 
     private void fiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fiveActionPerformed
-area.setText(area.getText()+five.getText());
+area.setText(area.getText()+five.getText().trim());
 arrayList.add(five.toString());// TODO add your handling code here:
     }//GEN-LAST:event_fiveActionPerformed
 
     private void sixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sixActionPerformed
-area.setText(area.getText()+six.getText());        // TODO add your handling code here:
+area.setText(area.getText()+six.getText().trim());
+arrayList.add(six.toString());// TODO add your handling code here:
     }//GEN-LAST:event_sixActionPerformed
 
     private void sevenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sevenActionPerformed
-area.setText(area.getText()+seven.getText());        // TODO add your handling code here:
+area.setText(area.getText()+seven.getText().trim());
+arrayList.add(seven.toString());// TODO add your handling code here:
     }//GEN-LAST:event_sevenActionPerformed
 
     private void eightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eightActionPerformed
-area.setText(area.getText()+eight.getText());        // TODO add your handling code here:
+area.setText(area.getText()+eight.getText().trim());
+arrayList.add(eight.toString());// TODO add your handling code here:
     }//GEN-LAST:event_eightActionPerformed
 
     private void nineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nineActionPerformed
-area.setText(area.getText()+nine.getText());        // TODO add your handling code here:
+area.setText(area.getText()+nine.getText().trim());
+arrayList.add(nine.toString());// TODO add your handling code here:
     }//GEN-LAST:event_nineActionPerformed
 
     private void zeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zeroActionPerformed
-area.setText(area.getText()+zero.getText());        // TODO add your handling code here:
+area.setText(area.getText()+zero.getText().trim());
+arrayList.add(zero.toString());// TODO add your handling code here:
     }//GEN-LAST:event_zeroActionPerformed
 
     private void wActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wActionPerformed
-area.setText(area.getText()+w.getText());        // TODO add your handling code here:
+area.setText(area.getText()+w.getText().trim());
+arrayList.add(w.toString());
+// TODO add your handling code here:
     }//GEN-LAST:event_wActionPerformed
-
+    
     private void eActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eActionPerformed
-area.setText(area.getText()+epsilon.getText());        // TODO add your handling code here:
+area.setText(area.getText()+epsilon.getText().trim());
+arrayList.add(epsilon.toString());// TODO add your handling code here:
     }//GEN-LAST:event_eActionPerformed
 
     private void rActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rActionPerformed
-area.setText(area.getText()+r.getText());        // TODO add your handling code here:
+area.setText(area.getText()+r.getText().trim());
+arrayList.add(r.toString());// TODO add your handling code here:
     }//GEN-LAST:event_rActionPerformed
 
     private void tActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tActionPerformed
-area.setText(area.getText()+t.getText());        // TODO add your handling code here:
+area.setText(area.getText()+t.getText().trim());
+arrayList.add(t.toString());// TODO add your handling code here:
     }//GEN-LAST:event_tActionPerformed
 
     private void yActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_yActionPerformed
-area.setText(area.getText()+y.getText());        // TODO add your handling code here:
+area.setText(area.getText()+y.getText().trim());
+arrayList.add(y.toString());// TODO add your handling code here:
     }//GEN-LAST:event_yActionPerformed
 
     private void uActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uActionPerformed
-area.setText(area.getText()+u.getText());        // TODO add your handling code here:
+area.setText(area.getText()+u.getText().trim());
+arrayList.add(u.toString());// TODO add your handling code here:
     }//GEN-LAST:event_uActionPerformed
 
     private void iActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iActionPerformed
-area.setText(area.getText()+i.getText());        // TODO add your handling code here:
+area.setText(area.getText()+i.getText().trim());
+arrayList.add(i.toString());// TODO add your handling code here:
     }//GEN-LAST:event_iActionPerformed
 
     private void oActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_oActionPerformed
-area.setText(area.getText()+o.getText());        // TODO add your handling code here:
+area.setText(area.getText()+o.getText().trim());
+arrayList.add(o.toString());// TODO add your handling code here:
     }//GEN-LAST:event_oActionPerformed
 
     private void pActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pActionPerformed
-area.setText(area.getText()+p.getText());        // TODO add your handling code here:
+area.setText(area.getText()+p.getText().trim());
+arrayList.add(p.toString());// TODO add your handling code here:
     }//GEN-LAST:event_pActionPerformed
 
     private void aActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aActionPerformed
-area.setText(area.getText()+a.getText());        // TODO add your handling code here:
+area.setText(area.getText()+a.getText().trim());
+arrayList.add(a.toString());// TODO add your handling code here:
     }//GEN-LAST:event_aActionPerformed
 
     private void sActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sActionPerformed
-area.setText(area.getText()+s.getText());        // TODO add your handling code here:
+area.setText(area.getText()+s.getText().trim());
+arrayList.add(s.toString());// TODO add your handling code here:
     }//GEN-LAST:event_sActionPerformed
 
     private void dActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dActionPerformed
-area.setText(area.getText()+d.getText());        // TODO add your handling code here:
+area.setText(area.getText()+d.getText().trim());
+arrayList.add(d.toString());// TODO add your handling code here:
     }//GEN-LAST:event_dActionPerformed
 
     private void fActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fActionPerformed
-area.setText(area.getText()+f.getText());        // TODO add your handling code here:
+area.setText(area.getText()+f.getText().trim());
+arrayList.add(f.toString());// TODO add your handling code here:
     }//GEN-LAST:event_fActionPerformed
 
     private void gActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gActionPerformed
-area.setText(area.getText()+g.getText());        // TODO add your handling code here:
+area.setText(area.getText()+g.getText().trim());
+arrayList.add(g.toString());// TODO add your handling code here:
     }//GEN-LAST:event_gActionPerformed
 
     private void hActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hActionPerformed
-area.setText(area.getText()+h.getText());        // TODO add your handling code here:
+area.setText(area.getText()+h.getText().trim());
+arrayList.add(h.toString());// TODO add your handling code here:
     }//GEN-LAST:event_hActionPerformed
 
     private void jActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jActionPerformed
-area.setText(area.getText()+j.getText());        // TODO add your handling code here:
+area.setText(area.getText()+j.getText().trim());
+arrayList.add(j.toString());// TODO add your handling code here:
     }//GEN-LAST:event_jActionPerformed
 
     private void kActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kActionPerformed
-area.setText(area.getText()+k.getText());        // TODO add your handling code here:
+area.setText(area.getText()+k.getText().trim());
+arrayList.add(k.toString());// TODO add your handling code here:
     }//GEN-LAST:event_kActionPerformed
 
     private void lActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lActionPerformed
-area.setText(area.getText()+l.getText());        // TODO add your handling code here:
+area.setText(area.getText()+l.getText().trim());
+arrayList.add(l.toString());// TODO add your handling code here:
     }//GEN-LAST:event_lActionPerformed
 
     private void xActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_xActionPerformed
-area.setText(area.getText()+x.getText());        // TODO add your handling code here:
+area.setText(area.getText()+x.getText().trim());
+arrayList.add(x.toString());// TODO add your handling code here:
     }//GEN-LAST:event_xActionPerformed
 
     private void cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cActionPerformed
-area.setText(area.getText()+c.getText());        // TODO add your handling code here:
+area.setText(area.getText()+c.getText().trim());
+arrayList.add(c.toString());// TODO add your handling code here:
     }//GEN-LAST:event_cActionPerformed
 
     private void vActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vActionPerformed
-area.setText(area.getText()+v.getText());        // TODO add your handling code here:
+area.setText(area.getText()+v.getText().trim());
+arrayList.add(v.toString());// TODO add your handling code here:
     }//GEN-LAST:event_vActionPerformed
 
     private void bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bActionPerformed
-area.setText(area.getText()+b.getText());        // TODO add your handling code here:
+area.setText(area.getText()+b.getText().trim());
+arrayList.add(b.toString());// TODO add your handling code here:
     }//GEN-LAST:event_bActionPerformed
 
     private void nActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nActionPerformed
-area.setText(area.getText()+n.getText());        // TODO add your handling code here:
+area.setText(area.getText()+n.getText().trim());
+arrayList.add(n.toString());// TODO add your handling code here:
     }//GEN-LAST:event_nActionPerformed
 
     private void mActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mActionPerformed
-area.setText(area.getText()+m.getText());        // TODO add your handling code here:
+area.setText(area.getText()+m.getText().trim());
+arrayList.add(m.toString());// TODO add your handling code here:
     }//GEN-LAST:event_mActionPerformed
 
     private void bk1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bk1ActionPerformed
-area.setText(area.getText()+bk1.getText());        // TODO add your handling code here:
+area.setText(area.getText()+bk1.getText().trim());
+arrayList.add(bk1.toString());// TODO add your handling code here:
     }//GEN-LAST:event_bk1ActionPerformed
 
     private void bk2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bk2ActionPerformed
-area.setText(area.getText()+bk2.getText());        // TODO add your handling code here:
+area.setText(area.getText()+bk2.getText().trim());
+arrayList.add(bk2.toString());// TODO add your handling code here:
     }//GEN-LAST:event_bk2ActionPerformed
 
     private void dsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dsActionPerformed
-area.setText(area.getText()+ds.getText());        // TODO add your handling code here:
+area.setText(area.getText()+ds.getText().trim());
+arrayList.add(ds.toString());// TODO add your handling code here:
     }//GEN-LAST:event_dsActionPerformed
 
     private void eqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eqActionPerformed
-area.setText(area.getText()+eq.getText());        // TODO add your handling code here:
+area.setText(area.getText()+eq.getText().trim());
+arrayList.add(eq.toString());// TODO add your handling code here:
     }//GEN-LAST:event_eqActionPerformed
 
     private void slActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slActionPerformed
-area.setText(area.getText()+sl.getText());        // TODO add your handling code here:
+area.setText(area.getText()+sl.getText().trim());
+arrayList.add(sl.toString());// TODO add your handling code here:
     }//GEN-LAST:event_slActionPerformed
 
     private void smActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_smActionPerformed
-area.setText(area.getText()+sm.getText());        // TODO add your handling code here:
+area.setText(area.getText()+sm.getText().trim());
+arrayList.add(sm.toString());// TODO add your handling code here:
     }//GEN-LAST:event_smActionPerformed
 
     private void uperActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uperActionPerformed
-area.setText(area.getText()+uper.getText());        // TODO add your handling code here:
+area.setText(area.getText()+uper.getText().trim());
+//arrayList.add(uper.toString());// TODO add your handling code here:
     }//GEN-LAST:event_uperActionPerformed
 
     private void lsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lsActionPerformed
-area.setText(area.getText()+ls.getText());        // TODO add your handling code here:
+area.setText(area.getText()+ls.getText().trim());
+arrayList.add(ls.toString());// TODO add your handling code here:
     }//GEN-LAST:event_lsActionPerformed
 
     private void gtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_gtActionPerformed
-area.setText(area.getText()+gt.getText());        // TODO add your handling code here:
+area.setText(area.getText()+gt.getText().trim());
+arrayList.add(gt.toString());// TODO add your handling code here:
     }//GEN-LAST:event_gtActionPerformed
 
     private void queActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_queActionPerformed
-area.setText(area.getText()+que.getText());        // TODO add your handling code here:
+area.setText(area.getText()+que.getText().trim());
+arrayList.add(que.toString());// TODO add your handling code here:
     }//GEN-LAST:event_queActionPerformed
 
     private void num7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num7ActionPerformed
-    area.setText(area.getText()+num7.getText());
+    area.setText(area.getText()+num7.getText().trim());
+    arrayList.add(num7.toString());
     }//GEN-LAST:event_num7ActionPerformed
 
     private void num8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num8ActionPerformed
-area.setText(area.getText()+num8.getText());        // TODO add your handling code here:
+area.setText(area.getText()+num8.getText().trim());
+arrayList.add(num8.toString());// TODO add your handling code here:
     }//GEN-LAST:event_num8ActionPerformed
 
     private void num9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num9ActionPerformed
-area.setText(area.getText()+num9.getText());        // TODO add your handling code here:
+area.setText(area.getText()+num9.getText().trim());
+arrayList.add(num9.toString());// TODO add your handling code here:
     }//GEN-LAST:event_num9ActionPerformed
 
     private void num4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num4ActionPerformed
-area.setText(area.getText()+num4.getText());        // TODO add your handling code here:
+area.setText(area.getText()+num4.getText().trim());
+arrayList.add(num4.toString());// TODO add your handling code here:
     }//GEN-LAST:event_num4ActionPerformed
 
     private void num5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num5ActionPerformed
-area.setText(area.getText()+num5.getText());        // TODO add your handling code here:
+area.setText(area.getText()+num5.getText().trim());
+arrayList.add(num5.toString());// TODO add your handling code here:
     }//GEN-LAST:event_num5ActionPerformed
 
     private void nuim6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuim6ActionPerformed
-area.setText(area.getText()+nuim6.getText());        // TODO add your handling code here:
+area.setText(area.getText()+nuim6.getText().trim());
+arrayList.add(nuim6.toString());// TODO add your handling code here:
     }//GEN-LAST:event_nuim6ActionPerformed
 
     private void num1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num1ActionPerformed
-area.setText(area.getText()+num1.getText());        // TODO add your handling code here:
+area.setText(area.getText()+num1.getText().trim());
+arrayList.add(num1.toString());// TODO add your handling code here:
     }//GEN-LAST:event_num1ActionPerformed
 
     private void num2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num2ActionPerformed
-area.setText(area.getText()+num2.getText());        // TODO add your handling code here:
+area.setText(area.getText()+num2.getText().trim());
+arrayList.add(num2.toString());// TODO add your handling code here:
     }//GEN-LAST:event_num2ActionPerformed
 
     private void num3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_num3ActionPerformed
-area.setText(area.getText()+num3.getText());        // TODO add your handling code here:
+area.setText(area.getText()+num3.getText().trim());
+arrayList.add(num3.toString());// TODO add your handling code here:
     }//GEN-LAST:event_num3ActionPerformed
 
     private void numzeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_numzeroActionPerformed
-area.setText(area.getText()+numzero.getText());        // TODO add your handling code here:
+area.setText(area.getText()+numzero.getText().trim());
+arrayList.add(numzero.toString());// TODO add your handling code here:
     }//GEN-LAST:event_numzeroActionPerformed
 
-    private void lockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lockActionPerformed
-
-         // TODO add your handling code here:
-    }//GEN-LAST:event_lockActionPerformed
-
-    private void lockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lockMouseClicked
- if (evt.getClickCount() == 2 && !jButton17.isSelected()) { 
-     a.setText("a");
-     b.setText("b");
-     c.setText("c");
-     d.setText("c");
-     epsilon.setText("e");
-     f.setText("f");
-     g.setText("g");
-     h.setText("h");
-     i.setText("i");
-     j.setText("j");
-     k.setText("k");
-     l.setText("l");
-     m.setText("m");
-     n.setText("n");
-     o.setText("o");
-     p.setText("p");
-     q.setText("q");
-     r.setText("r");
-     s.setText("s");
-     t.setText("t");
-     u.setText("u");
-     v.setText("v");
-     w.setText("w");
-     x.setText("x");
-     y.setText("y");
-     z.setText("z");
-     
-     
-     
-  } 
-if (evt.getClickCount() == 1 && !jButton17.isSelected()) {     
-     a.setText("A");
-     b.setText("B");
-     c.setText("C");
-     d.setText("D");
-     epsilon.setText("E");
-     f.setText("F");
-     g.setText("G");
-     h.setText("H");
-     i.setText("I");
-     j.setText("J");
-     k.setText("K");
-     l.setText("L");
-     m.setText("M");
-     n.setText("N");
-     o.setText("O");
-     p.setText("P");
-     q.setText("Q");
-     r.setText("R");
-     s.setText("S");
-     t.setText("T");
-     u.setText("U");
-     v.setText("V");
-     w.setText("W");
-     x.setText("X");
-     y.setText("Y");
-     z.setText("Z");
-  }
-
-
-if(evt.getClickCount() == 2 && jButton17.isSelected()) {
-	 a.setText("�");
-     b.setText("�");
-     c.setText("�");
-     d.setText("�");
-     epsilon.setText("�");
-     f.setText("�");
-     g.setText("�");
-     h.setText("�");
-     i.setText("�");
-     j.setText("�");
-     k.setText("�");
-     l.setText("�");
-     m.setText("�");
-     n.setText("�");
-     o.setText("�");
-     p.setText("�");
-     q.setText(";");
-     r.setText("�");
-     s.setText("�");
-     t.setText("�");
-     u.setText("�");
-     v.setText("�");
-     w.setText("�");
-     x.setText("�");
-     y.setText("�");
-     z.setText("�");
-}
-if(evt.getClickCount() == 1 && jButton17.isSelected()) {
-	 a.setText("�");
-    b.setText("�");
-    c.setText("�");
-    d.setText("�");
-    epsilon.setText("�");
-    f.setText("�");
-    g.setText("�");
-    h.setText("�");
-    i.setText("�");
-    j.setText("�");
-    k.setText("�");
-    l.setText("�");
-    m.setText("�");
-    n.setText("�");
-    o.setText("�");
-    p.setText("�");
-    q.setText(";");
-    r.setText("�");
-    s.setText("�");
-    t.setText("�");
-    u.setText("�");
-    v.setText("�");
-    w.setText("�");
-    x.setText("�");
-    y.setText("�");
-    z.setText("�");
-}
-// TODO add your handling code here:
-    }//GEN-LAST:event_lockMouseClicked
+//    private void lockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lockActionPerformed
+//
+//         // TODO add your handling code here:
+//    }//GEN-LAST:event_lockActionPerformed
+//
+//    
+//// TODO add your handling code here:
+//    }//GEN-LAST:event_lockMouseClicked
 
     private void escActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escActionPerformed
       area.setText("");  // for empty textbox
@@ -1411,7 +1679,9 @@ if(evt.getClickCount() == 1 && jButton17.isSelected()) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MyJFrame(area).setVisible(true);
+                new MyJFrame(area).setLocation(10, 10);
+            	
+            	
             }
         });
     }
@@ -1452,7 +1722,7 @@ if(evt.getClickCount() == 1 && jButton17.isSelected()) {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton k;
     private javax.swing.JButton l;
-    private javax.swing.JButton lock;
+    private javax.swing.JToggleButton lock;
     private javax.swing.JButton ls;
     private javax.swing.JButton m;
     private javax.swing.JButton multy;
@@ -1485,7 +1755,7 @@ if(evt.getClickCount() == 1 && jButton17.isSelected()) {
     private javax.swing.JButton subtract;
     private javax.swing.JButton t;
     private javax.swing.JButton tab;
-    private static javax.swing.JTextArea area;
+    private static javax.swing.JTextField area;
     private javax.swing.JButton three;
     private javax.swing.JButton two;
     private javax.swing.JButton u;
@@ -1498,11 +1768,14 @@ if(evt.getClickCount() == 1 && jButton17.isSelected()) {
     private javax.swing.JButton zero;
     
     // End of variables declaration//GEN-END:variables
-	public javax.swing.JTextArea getTb1() {
+	public javax.swing.JTextField getTb1() {
 		return area;
 	}
 
-	public void setTb1(javax.swing.JTextArea tb1) {
+	public void setTb1(javax.swing.JTextField tb1) {
 		MyJFrame.area = tb1;
+	}
+	private void remove() {
+		arrayList.removeAll(arrayList);
 	}
 }
